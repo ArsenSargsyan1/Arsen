@@ -4,7 +4,7 @@ var random = require("./random");
 module.exports = class Mard extends LiveForm {
     constructor(x, y) {
        super(x,y);
-       this.life = 10;
+       this.live = 10;
     }
     getNewCoordinates() {
         this.directions = [

@@ -15,6 +15,14 @@ function setup() {
     let mardCountElement = document.getElementById('mardCount');
     let predatorCountElement = document.getElementById('predatorCount');
 
+    //
+    let grassLiveCountElement = document.getElementById('grassLiveCount');
+    let grassEaterLiveCountElement = document.getElementById('grassEaterLiveCount');
+    let killerCountLiveElement = document.getElementById('killerLiveCount');
+    let mardCountLiveElement = document.getElementById('mardLiveCount');
+    let predatorLiveCountElement = document.getElementById('predatorLiveCount');
+
+
     //! adding socket listener on "data" <-- nnpm noame, after that fire 'drawCreatures' function 
 
     socket.on("data", drawCreatures);
@@ -23,10 +31,17 @@ function setup() {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
         grassCountElement.innerText = data.grassCounter;
-        grassEaterCountElement.innerText = data.grassCounter;
-        killerCountElement.innerText = data.grassCounter;
-        mardCountElement.innerText = data.grassCounter;
-        predatorCountElement.innerText = data.grassCounter;
+        grassEaterCountElement.innerText = data.grassEaterCounter;
+        killerCountElement.innerText = data.killerCounter;
+        mardCountElement.innerText = data.mardCounter;
+        predatorCountElement.innerText = data.predatorCounter;
+
+        //
+        grassLiveCountElement.innerText = data.grassLiveCounter;
+        grassEaterLiveCountElement.innerText = data.grassEaterLiveCounter;
+        killerCountLiveElement.innerText = data.killerLiveCounter;
+        mardCountLiveElement.innerText = data.mardLiveCounter;
+        predatorLiveCountElement.innerText = data.predatorLiveCounter;
             //! Every time it creates new Canvas woth new matrix size
     createCanvas(matrix[0].length * side, matrix.length * side);
             //! clearing background by setting it to new grey color

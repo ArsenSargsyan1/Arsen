@@ -80,6 +80,7 @@ function creatingObjects() {
             if (matrix[y][x] == 2) {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
+                grassEaterHashiv++
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
@@ -150,9 +151,13 @@ function game() {
         grassCounter: grassHashiv,
         grassLiveCounter: grassArr.length,
         grassEaterCounter: grassEaterHashiv,
+        grassEaterLiveCounter: grassEaterArr.length,
         killerCounter: killerHashiv,
+        killerLiveCounter: killerArr.length,
         mardCounter: mardHashiv,
+        mardLiveCounter: mardArr.length,
         predatorCounter: predatorHashiv,
+        predatorLiveCounter: predatorArr.length,
         weather: weather
     }
 
