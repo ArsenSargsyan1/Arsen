@@ -4,6 +4,7 @@ var GrassEater = require("./modules/GrassEater.js");
 var Killer = require("./modules/Killer.js");
 var Mard = require("./modules/Mard.js");
 var Predator = require("./modules/Predator.js");
+var Prkich = require("./modules/Prkich.js");
 let random = require('./modules/random');
 //! Requiring modules  --  END
 
@@ -12,6 +13,7 @@ grassEaterArr = [];
 killerArr = [];
 mardArr = [];
 predatorArr = [];
+prkichArr = [];
 matrix = [];
 
 
@@ -21,12 +23,13 @@ grassEaterHashiv = 0;
 killerHashiv = 0;
 mardHashiv = 0;
 predatorHashiv = 0;
+prkichHashiv = 0;
 // statistics end
 
 // time = 0
 //! Creating MATRIX -- START
 
-function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator) {
+function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator,prkich) {
     for (let i = 0; i < matrixSize; i++) {
         matrix[i] = [];
         for (let o = 0; o < matrixSize; o++) {
@@ -34,7 +37,7 @@ function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator) 
         }
     }
     for (let i = 0; i < grass; i++) {
-        let customX = Math.floor(random(matrixSize)); // 0 - 39
+        let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
         matrix[customY][customX] = 1;
     }
@@ -46,7 +49,7 @@ function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator) 
     for (let i = 0; i < killer; i++) {
         let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
-        matrix[customY][customX] = 3;
+        matrix[customY][customX] = 5;
     }
     for (let i = 0; i < mard; i++) {
         let customX = Math.floor(random(matrixSize));
@@ -56,13 +59,20 @@ function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator) 
     for (let i = 0; i < predator; i++) {
         let customX = Math.floor(random(matrixSize));
         let customY = Math.floor(random(matrixSize));
-        matrix[customY][customX] = 5;
+        matrix[customY][customX] = 3;
     }
+    
+    for (let i = 0; i < prkich; i++) {
+        let customX = Math.floor(random(matrixSize));
+        let customY = Math.floor(random(matrixSize));
+        matrix[customY][customX] = 6;
+    }
+    
 }
-matrixGenerator(20, 25, 20, 15, 10, 2);
-//! Creating MATRIX -- END
+matrixGenerator(20, 100, 30, 8, 10, 15,10);
+console.log(2);
 
-//! SERVER STUFF  --  START
+
 var express = require('express');
 var app = express();
 var server = require('http').Server(app);
@@ -75,6 +85,8 @@ server.listen(3000);
 //! SERVER STUFF END  --  END
 
 function creatingObjects() {
+
+    
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 2) {
@@ -86,7 +98,7 @@ function creatingObjects() {
                 grassArr.push(grass);
                 grassHashiv++
             }
-            else if (matrix[y][x] == 3) {
+            else if (matrix[y][x] == 5) {
                 var killer = new Killer(x, y);
                 killerArr.push(killer);
                 killerHashiv++
@@ -96,10 +108,15 @@ function creatingObjects() {
                 mardArr.push(mard);
                 mardHashiv++
             }
-            else if (matrix[y][x] == 5) {
+            else if (matrix[y][x] == 3) {
                 var predator = new Predator(x, y);
                 predatorArr.push(predator);
                 predatorHashiv++
+            }
+            else if (matrix[y][x] == 6) {
+                var prkich = new Prkich(x, y);
+                prkichArr.push(prkich);
+                prkichHashiv++;
             }
         }
     }
@@ -111,11 +128,17 @@ let exanak = 0
 function game() {
     exanak++;
     if (exanak <= 10){
-        weather = "summer"
+        weather = "Գարուն"
+        
     }else if (exanak <= 20){
-        weather = "autumn"
-    }else if (exanak > 20){
-        exanak = 0
+        weather = "Ամառ"
+    }else if (exanak <= 30){
+        weather = "Աշուն"
+    }
+    else if (exanak <= 40){
+        weather = "Ձմեռ"
+    }else if (exanak > 40){
+       exanak = 0
     }
 
 
@@ -128,21 +151,31 @@ function game() {
         for (var i in grassEaterArr) {
             grassEaterArr[i].eat();
         }
+
     }
-    if (killerArr[0] !== undefined) {
-        for (var i in killerArr) {
-            killerArr[i].eat();
+    if (predatorArr[0] !== undefined) {
+        for (var i in predatorArr) {
+            predatorArr[i].eat();
+            
         }
     }
     if (mardArr[0] !== undefined) {
         for (var i in mardArr) {
             mardArr[i].eat();
+            
         }
     }
-    if (predatorArr[0] !== undefined) {
-        for (var i in predatorArr) {
-            predatorArr[i].eat();
+    
+    if (killerArr[0] !== undefined) {
+        for (var i in killerArr) {
+            killerArr[i].eat();
+           
         }
+        if (prkichArr[0] !== undefined) {
+            for (var i in prkichArr) {
+                prkichArr[i].eat();
+               
+            }
     }
 
     //! Object to send
@@ -158,7 +191,9 @@ function game() {
         mardLiveCounter: mardArr.length,
         predatorCounter: predatorHashiv,
         predatorLiveCounter: predatorArr.length,
-        weather: weather
+        prkich: prkichHashiv,
+        prkichLive: prkichArr.length,
+        weather: weather,
     }
 
     //! Send data over the socket to clients who listens "data"
@@ -169,5 +204,4 @@ function game() {
 
 setInterval(game, 1000)
  
- 
-
+}

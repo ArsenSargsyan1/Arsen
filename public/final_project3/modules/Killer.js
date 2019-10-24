@@ -38,7 +38,7 @@ module.exports = class Killer extends LiveForm {
 
             let x = newCell[0];
             let y = newCell[1];
-
+            killerHashiv++;
             // matrixi mej gru mem MEK -> 
             matrix[y][x] = 5;
 

@@ -32,7 +32,7 @@ module.exports = class Predator extends LiveForm {
 
             let x = newCell[0];
             let y = newCell[1];
-
+            predatorHashiv++;
             // matrixi mej gru mem 3 -> 
             matrix[y][x] = 3;
 

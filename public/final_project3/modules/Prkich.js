@@ -3,7 +3,7 @@ var random = require("./random.js");
 
 
 
-module.exports = class GrassEater extends LiveForm {
+module.exports = class Prkich extends LiveForm {
     constructor(x, y) {
         super(x, y);
         this.life = 10;
@@ -25,19 +25,19 @@ module.exports = class GrassEater extends LiveForm {
         return super.chooseCell(character);
     } 
     mul() {
-        let emptyCells0 = this.chooseCell(0);
+        let emptyCells0 = this.chooseCell(5);
         let newCell = random(emptyCells0);
 
         if (newCell) {
 
             let x = newCell[0];
             let y = newCell[1];
-            grassEaterHashiv++;
+            prkichHashiv++;
             // matrixi mej gru mem MEK -> 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
 
-            let grassEater = new GrassEater(x, y);
-            grassEaterArr.push(grassEater);
+            let prkich = new Prkich(x, y);
+            prkichrArr.push(prkich);
 
 
 
@@ -45,7 +45,7 @@ module.exports = class GrassEater extends LiveForm {
         }
     }
     eat() {
-        let emptyCells = this.chooseCell(1);
+        let emptyCells = this.chooseCell(5);
         let newCell = random(emptyCells);
 
         if (newCell) {
@@ -53,12 +53,12 @@ module.exports = class GrassEater extends LiveForm {
             let x = newCell[0];
             let y = newCell[1];
 
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
 
-            for (let i in grassArr) {
-                if (grassArr[i].x == x && grassArr[i].y == y) {
-                    grassArr.splice(i, 1)
+            for (let i in grassEaterArr) {
+                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
+                    grassEaterArr.splice(i, 1)
                 }
             }
 
@@ -84,7 +84,7 @@ module.exports = class GrassEater extends LiveForm {
             let y = newCell[1];
 
             // matrixi mej gru mem MEK -> 1
-            matrix[y][x] = 2;
+            matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
 
             this.y = y;
@@ -100,9 +100,9 @@ module.exports = class GrassEater extends LiveForm {
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in grassEaterArr) {
-            if (grassEaterArr[i].x == this.x && grassEaterArr[i].y == this.y) {
-                grassEaterArr.splice(i, 1)
+        for (let i in prkichArr) {
+            if (prkichArr[i].x == this.x && prkichArr[i].y == this.y) {
+                prkichArr.splice(i, 1)
             }
 
 

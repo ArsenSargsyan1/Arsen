@@ -32,7 +32,7 @@
                 <h1>Ծրագրավորում III Երևան</h1>
             </tr>
             <tr>
-                <h1>Անուն Ազգանուն</h1>
+                <h1>Արսեն Սարգսյան</h1>
             </tr>
             <tr>
                 <td>Exanak</td>
@@ -50,8 +50,7 @@
             <tr>
                 <th scope="row">1</th>
                 <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ երբ նրան սպանում ե տիտանը:Նրա արագությունը և գույնը փոխվում է ըստ եղանակի:</td>
+                <td>Սա խոտն է , որը միայն բազմանում է</td>
                 <td id="grassCount"></td>
                 <td id="grassLiveCount"></td>
                 
@@ -59,34 +58,39 @@
             <tr>
                 <th scope="row">2</th>
                 <td scope="row" style="background-color:yellow;"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան սպանում ե տիտանը:</td>
+                <td>Սա խոտակերն է ,որը բազմանում է ուտելով 20 խոտ</td>
                 <td id="grassEaterCount"></td>
                 <td id="grassEaterLiveCount"></td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td scope="row" style="background-color:red;"></td>
-                <td>Կարմիրը գիշատիչն է, որը բազմանում է N հատ խոտակեր ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է տերմինատորը, կամ երբ նրան սպանում ե տիտանը:</td>
-                <td id="killerCount"></td>
-                <td id="killerLiveCount"></td>
+                <td>Սա գիշատիչն է ,որը ուտում է միայն խոտակերին և բազմանում է ուտելով 4 խոտակեր</td>
+                <td id="predatorCount"></td>
+                <td id="predatorLiveCount"></td>
             </tr>
             <tr>
                 <th scope="row">4</th>
                 <td scope="row" style="background-color:blue;"></td>
-                <td>Կապույտը տերմինատորն է, որը բազմանում է N հատ գիշատիչ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է տիտանը:</td>
+                <td>Սա մարդն է , որը ուտում է գիշատչին և խոտակերին , և բազմանում է ուտելով 4 գիշատչին կամ խոտակերին</td>
                 <td id="mardCount"></td>
                 <td id="mardLiveCount"></td>
             </tr>
             <tr>
                 <th scope="row">5</th>
                 <td scope="row" style="background-color:black;"></td>
-                <td>Սևը տիտանն է, որը շատ դժվար ե բազմանում:Բազմանում է N հատ խոտակեր,գիշատիչ,խոտ,տերմինատոր ուտելուց հետո և չի մահանում:
+                <td>Սա մարդասպանն է ,որը ուտում է մարդուն և գիշատչին ,բայց բազմանում է ուտելով միայն 5 մարդնու,գիշատչին ուտելիս չի բազմանում
                     </td>
-                <td id="predatorCount"></td>
-                <td id="predatorLiveCount"></td>
+                <td id="killerCount"></td>
+                <td id="killerLiveCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td scope="row" style="background-color:#e9ecef;"></td>
+                <td>Սա  փրկիչն է, որը ուտում է մարդասպանին և բազմանում է ուտելով 2 մարդասպանի;      
+                    </td>
+                <td id="prkich"></td>
+                <td id="prkichLive"></td>
             </tr>
         </tbody>
     </table>

@@ -34,7 +34,7 @@ module.exports = class Grass extends LiveForm {
 
             let x = newCell[0];
             let y = newCell[1];
-
+            grassHashiv++;
             // matrixi mej gru mem MEK -> 1
             matrix[y][x] = 1;
 

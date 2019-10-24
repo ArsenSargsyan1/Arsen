@@ -38,7 +38,7 @@ module.exports = class Mard extends LiveForm {
 
             let x = newCell[0];
             let y = newCell[1];
-
+            mardHashiv++;
             // matrixi mej gru mem MEK -> 
             matrix[y][x] = 4;
 
