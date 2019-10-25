@@ -69,8 +69,8 @@ function matrixGenerator(matrixSize, grass, grassEater, killer, mard, predator,p
     }
     
 }
-matrixGenerator(20, 100, 30, 8, 10, 15,10);
-console.log(2);
+matrixGenerator(20, 300, 20, 20, 20, 20,3);
+
 
 
 var express = require('express');
@@ -121,7 +121,7 @@ function creatingObjects() {
         }
     }
 
-}
+} 
 
 creatingObjects();
 let exanak = 0
@@ -169,15 +169,14 @@ function game() {
     if (killerArr[0] !== undefined) {
         for (var i in killerArr) {
             killerArr[i].eat();
-           
         }
-        if (prkichArr[0] !== undefined) {
-            for (var i in prkichArr) {
-                prkichArr[i].eat();
-               
-            }
+    }    
+     if (prkichArr[0] !== undefined) {
+        for (var i in prkichArr) {
+            prkichArr[i].eat();
+        }
+        
     }
-
     //! Object to send
     let sendData = {
         matrix: matrix,
@@ -198,10 +197,15 @@ function game() {
 
     //! Send data over the socket to clients who listens "data"
     io.sockets.emit("data", sendData);
+
+
 }
-
-
 
 setInterval(game, 1000)
  
-}
+
+
+
+
+
+  

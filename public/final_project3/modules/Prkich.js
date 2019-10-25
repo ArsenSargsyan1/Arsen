@@ -6,7 +6,7 @@ var random = require("./random.js");
 module.exports = class Prkich extends LiveForm {
     constructor(x, y) {
         super(x, y);
-        this.life = 10;
+        this.jizn = 10;
     }
     getNewCoordinates() {
         this.directions = [
@@ -25,8 +25,8 @@ module.exports = class Prkich extends LiveForm {
         return super.chooseCell(character);
     } 
     mul() {
-        let emptyCells0 = this.chooseCell(5);
-        let newCell = random(emptyCells0);
+        let emptyCells7 = this.chooseCell(0);
+        let newCell = random(emptyCells7);
 
         if (newCell) {
 
@@ -41,7 +41,7 @@ module.exports = class Prkich extends LiveForm {
 
 
 
-            this.life = 10;
+            this.jizn = 10;
         }
     }
     eat() {
@@ -49,16 +49,16 @@ module.exports = class Prkich extends LiveForm {
         let newCell = random(emptyCells);
 
         if (newCell) {
-            this.life++;
+            this.jizn++;
             let x = newCell[0];
             let y = newCell[1];
 
             matrix[y][x] = 6;
             matrix[this.y][this.x] = 0;
 
-            for (let i in grassEaterArr) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
+            for (let i in killerArr) {
+                if (killerArr[i].x == x && killerArr[i].y == y) {
+                    killerArr.splice(i, 1)
                 }
             }
 

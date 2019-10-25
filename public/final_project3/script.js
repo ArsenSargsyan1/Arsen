@@ -1,7 +1,7 @@
 
 //! Setup function fires automatically
 function setup() {
-
+ 
     var socket = io();
 
     var side = 30;
@@ -16,6 +16,7 @@ function setup() {
     let predatorCountElement = document.getElementById('predatorCount');
     let weatherElement = document.getElementById('weather');
     let prkichElement = document.getElementById('prkich');
+    
     //
     let grassLiveCountElement = document.getElementById('grassLiveCount');
     let grassEaterLiveCountElement = document.getElementById('grassEaterLiveCount');
@@ -26,7 +27,7 @@ function setup() {
 
 
     //! adding socket listener on "data" <-- nnpm noame, after that fire 'drawCreatures' function 
-console.log(5);
+
 
     socket.on("data", drawCreatures);
 
@@ -52,6 +53,7 @@ console.log(5);
             //! clearing background by setting it to new grey color
 
     background('#acacac');
+
 
 
 
